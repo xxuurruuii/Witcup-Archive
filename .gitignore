@@ -2,3 +2,6 @@ Thumbs.db
 desktop.ini
 .DS_Store
 README.md
+
+# 原始资料包放在 GitHub Release 附件里，不进仓库
+*.zip

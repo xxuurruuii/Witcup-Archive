@@ -4,7 +4,9 @@
  *
  * 届次字段：
  *   short    用于「出现轮次」按钮的文字，如「第3届样卷」
+ *   no       首页按此倒序；相同时保持 seasons 中的先后（第3届在前，样卷在后）
  *   date     首页卡片上的日期，留空则显示「无」
+ *   archive  原始资料包（可选）：url 为 GitHub Release 附件地址，label 为按钮说明
  *   facts    赛制信息卡片；样卷之类没有举办时间的，时间写「无」
  *
  * 机制字段（站点级，不隶属于某一届）：
@@ -18,7 +20,7 @@ window.WC_DATA = {
     name: '见联会',
     tagline: '见证者玩家社群 · 解谜竞赛档案',
     intro: '这里存档「见联会」历届比赛的时间、赛制、原创机制与全部题目。',
-    updated: '2026-11-06'
+    updated: '2026-11-07'
   },
 
   mechanisms: [
@@ -110,8 +112,7 @@ window.WC_DATA = {
       note: '第3届见联会样卷原创机制',
       tagline: '消除阶段开头，把一格与自身分离进云区域',
       rule: [
-        '在消除阶段开头，云终端以任意顺序发生效果：选取一个所在区域的格子，将这格和云终端所在的格子从原先的区域中分离并放入该颜色的「云区域」中，该操作不会切割原先区域中的其他格子。',
-        '云终端必须发生作用，否则会报错。'
+        '在消除阶段开头，云终端以任意顺序发生效果：选取一个所在区域的格子，将这格和云终端所在的格子从原先的区域中分离并放入该颜色的“云区域”中，该操作不会切割原先区域中的其他格子。云终端发生作用时不能处于自身颜色对应的云区域中。云终端必须发生作用，否则会报错。'
       ],
       related: [],
       seasons: ['wc3pre']
@@ -142,6 +143,59 @@ window.WC_DATA = {
       ],
       related: [],
       seasons: ['wc3pre']
+    },
+    {
+      id: 'twopoint',
+      name: '二重点',
+      image: 'wc3/机制/二重点.png',
+      page: 'mechanism/二重点.html',
+      note: '第3届见联会原创机制',
+      tagline: '二重点可以且必须经过两次',
+      rule: [
+        '二重点可以且必须经过两次。'
+      ],
+      related: [],
+      seasons: ['wc3']
+    },
+    {
+      id: 'phagocyte',
+      name: '吞噬细胞',
+      image: 'wc3/机制/吞噬细胞.png',
+      page: 'mechanism/吞噬细胞.html',
+      note: '第3届见联会原创机制',
+      tagline: '所在区域符号全部报错时，消除整区符号',
+      rule: [
+        '在消除阶段开头，若吞噬细胞所在区域所有符号均报错，则消除区域内所有符号，否则不消除并报错。'
+      ],
+      related: [],
+      seasons: ['wc3']
+    },
+    {
+      id: 'antigen',
+      name: '抗原',
+      image: 'wc3/机制/抗原.png',
+      page: 'mechanism/抗原.html',
+      note: '第3届见联会原创机制',
+      tagline: '可以且必须消除同区域一个正确符号',
+      rule: [
+        '在消除阶段，抗原可以且必须消除同区域一个正确符号。'
+      ],
+      related: [],
+      seasons: ['wc3']
+    },
+    {
+      id: 'fractal',
+      name: '分形格',
+      image: 'wc3/机制/分形格.png',
+      page: 'mechanism/分形格.html',
+      note: '第3届见联会原创机制，仅在第3届特定题目中使用',
+      tagline: '选定起点与终点后变成传送门，把起点传送到终点',
+      rule: [
+        '分形格是一块与题板相同形状不同大小的范围，玩家选定题板的起点与终点后，分形格将转换为传送门，将对应的起点传送到对应的终点，此时两个点都视为被经过。传送门允许不被线条经过，但线条经过时必定被传送。除了这两点之外的位置没有其他限制。',
+        '对于双线题目，分形格要么被两条线都经过，要么都不经过。有时分形格之间有重叠，会通过给格子涂不同颜色来表示。'
+      ],
+      related: [],
+      seasons: ['wc3']
     }
   ],
 
@@ -161,7 +215,7 @@ window.WC_DATA = {
         { k: '比赛形式', v: 'QQ 群内逐题发布 · 限时提交' }
       ],
       archive: {
-        file: '第一届见证者群比赛.zip',
+        url: 'https://github.com/xxuurruuii/Witcup-Archive/releases/download/wc1/wc1.zip',
         label: '下载第1届原始资料包'
       },
       puzzles: [
@@ -227,7 +281,7 @@ window.WC_DATA = {
         { k: '比赛形式', v: 'QQ 群内逐章发布 · A–D 章各 15 分钟，压轴 20 分钟' }
       ],
       archive: {
-        file: '第二届见证者群比赛.zip',
+        url: 'https://github.com/xxuurruuii/Witcup-Archive/releases/download/wc2/wc2.zip',
         label: '下载第2届原始资料包'
       },
       puzzles: [
@@ -278,6 +332,55 @@ window.WC_DATA = {
         { id: 'D09超量', name: 'D09超量', group: 'D卷', file: '题目/D卷/D09超量.png' },
 
         { id: '压轴 插接', name: '压轴 插接', group: '压轴', file: '题目/压轴 插接.png' }
+      ]
+    },
+
+    {
+      id: 'wc3',
+      no: 3,
+      dir: 'wc3',
+      title: '第3届见联会',
+      short: '第3届',
+      date: '2020-01-30',
+      time: '晚',
+      duration: '约 90 分钟',
+      format: 'QQ 群内逐章发布，限时提交',
+      facts: [
+        { k: '比赛时间', v: '2020-01-30 晚（UTC+8）· 约 90 分钟' },
+        { k: '比赛形式', v: 'QQ 群内逐章发布 · 四部分依次 20、15、20、25 分钟' }
+      ],
+      archive: {
+        url: 'https://github.com/xxuurruuii/Witcup-Archive/releases/download/wc3/wc3.zip',
+        label: '下载第3届原始资料包'
+      },
+      puzzles: [
+        { id: '11', name: '11', group: '第1部分', file: '题目/11.png' },
+        { id: '12', name: '12', group: '第1部分', file: '题目/12.png' },
+        { id: '13', name: '13', group: '第1部分', file: '题目/13.png' },
+        { id: '14', name: '14', group: '第1部分', file: '题目/14.png' },
+        { id: '15', name: '15', group: '第1部分', file: '题目/15.png' },
+        { id: '16', name: '16', group: '第1部分', file: '题目/16.png' },
+        { id: '17', name: '17', group: '第1部分', file: '题目/17.png' },
+        { id: '18', name: '18', group: '第1部分', file: '题目/18.png' },
+
+        { id: '21同步', name: '21同步', group: '第2部分', file: '题目/21同步.png' },
+        { id: '21挡板', name: '21挡板', group: '第2部分', file: '题目/21挡板.png' },
+        { id: '21点断', name: '21点断', group: '第2部分', file: '题目/21点断.png' },
+        { id: '22二重点', name: '22二重点', group: '第2部分', file: '题目/22二重点.png' },
+        { id: '22吞噬细胞', name: '22吞噬细胞', group: '第2部分', file: '题目/22吞噬细胞.png' },
+        { id: '22抗原', name: '22抗原', group: '第2部分', file: '题目/22抗原.png' },
+
+        { id: '31', name: '31', group: '第3部分', file: '题目/31.png' },
+        { id: '32', name: '32', group: '第3部分', file: '题目/32.png' },
+        { id: '33', name: '33', group: '第3部分', file: '题目/33.png' },
+        { id: '34', name: '34', group: '第3部分', file: '题目/34.png' },
+        { id: '35', name: '35', group: '第3部分', file: '题目/35.png' },
+        { id: '36', name: '36', group: '第3部分', file: '题目/36.png' },
+        { id: '37', name: '37', group: '第3部分', file: '题目/37.png' },
+        { id: '38', name: '38', group: '第3部分', file: '题目/38.png' },
+
+        { id: '41压轴', name: '41压轴', group: '第4部分', file: '题目/41压轴.png' },
+        { id: '42大轴', name: '42大轴', group: '第4部分', file: '题目/42大轴.png' }
       ]
     },
 

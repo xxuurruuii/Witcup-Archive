@@ -106,6 +106,7 @@
   var seasonList = document.getElementById('season-list');
   if (seasonList) {
     var totalPuzzles = 0;
+    /* no 相同的届次（如第3届与其样卷）保持 seasons 中的先后顺序。 */
     var latestFirst = seasons.slice().sort(function (a, b) {
       return b.no - a.no;
     });
@@ -172,8 +173,17 @@
     facts.innerHTML = chips.join('');
   }
 
-  var mechGrid = document.getElementById('mechanism-grid');
-  if (mechGrid) {
+  var archiveBox = document.getElementById('archive-box');
+  if (archiveBox) {
+    var archiveLink = document.getElementById('archive-link');
+    if (season.archive && season.archive.url) {
+      archiveLink.href = season.archive.url;
+      archiveLink.title = season.archive.label || '下载原始资料包';
+      archiveBox.hidden = false;
+    }
+  }
+
+  var mechGrid = document.getElementById('mechanism-grid');  if (mechGrid) {
     mechGrid.innerHTML = mechanismsOf(season).map(function (mech) {
       return '' +
         '<a class="mech-card" href="../' + esc(mech.page) + '">' +
