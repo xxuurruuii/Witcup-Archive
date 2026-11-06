@@ -6,8 +6,9 @@
   if (!data || !data.seasons.length) return;
 
   var params = new URLSearchParams(window.location.search);
+  var seasonId = params.get('s') || document.body.getAttribute('data-season');
   var season = data.seasons.find(function (item) {
-    return item.id === params.get('s');
+    return item.id === seasonId;
   }) || data.seasons[0];
   if (!season || !season.puzzles.length) return;
 
@@ -39,6 +40,7 @@
   var undoBtn = document.getElementById('undo');
   var clearBtn = document.getElementById('clear');
   var cursorEl = document.getElementById('brush-cursor');
+  var noteEl = document.getElementById('puzzle-note');
 
   var ctx = canvas.getContext('2d');
   var current = null;
@@ -296,19 +298,27 @@
   function updateUI() {
     if (!current) return;
     nameEl.textContent = current.name;
-    var groupLabel = current.group === '压轴' ? '压轴' : current.group + ' 组';
+    var groupLabel = (/卷$/.test(current.group) || current.group === '压轴')
+      ? current.group
+      : current.group + ' 组';
     progressEl.textContent = groupLabel + ' · ' + (groupIndex + 1) + ' / ' + groupPuzzles.length;
-    document.title = current.name + ' · 第一届见联会';
+    document.title = current.name + ' · ' + season.title;
 
-    var multiple = groupPuzzles.length > 1;
-    prevBtn.hidden = !multiple;
-    nextBtn.hidden = !multiple;
-    if (multiple) {
-      var prevPuzzle = groupPuzzles[(groupIndex - 1 + groupPuzzles.length) % groupPuzzles.length];
-      var nextPuzzle = groupPuzzles[(groupIndex + 1) % groupPuzzles.length];
-      prevBtn.setAttribute('aria-label', '上一题：' + prevPuzzle.name);
-      nextBtn.setAttribute('aria-label', '下一题：' + nextPuzzle.name);
+    if (noteEl) {
+      var note = current.note || '';
+      noteEl.textContent = note;
+      noteEl.hidden = !note;
     }
+
+    var prevPuzzle = groupPuzzles.length > 1 ? groupPuzzles[groupIndex - 1] : null;
+    var nextPuzzle = groupPuzzles.length > 1 ? groupPuzzles[groupIndex + 1] : null;
+
+    prevBtn.hidden = !prevPuzzle;
+    nextBtn.hidden = !nextPuzzle;
+    prevBtn.disabled = !prevPuzzle;
+    nextBtn.disabled = !nextPuzzle;
+    if (prevPuzzle) prevBtn.setAttribute('aria-label', '上一题：' + prevPuzzle.name);
+    if (nextPuzzle) nextBtn.setAttribute('aria-label', '下一题：' + nextPuzzle.name);
   }
 
   function setMode(nextMode) {
@@ -417,7 +427,8 @@
 
   function switchPuzzle(delta) {
     if (groupPuzzles.length < 2) return;
-    var nextIndex = (groupIndex + delta + groupPuzzles.length) % groupPuzzles.length;
+    var nextIndex = groupIndex + delta;
+    if (nextIndex < 0 || nextIndex >= groupPuzzles.length) return;
     loadPuzzle(groupPuzzles[nextIndex]);
   }
 

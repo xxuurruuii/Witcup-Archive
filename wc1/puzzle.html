@@ -4,32 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>作答 · 见联会存档</title>
-<meta name="description" content="第一届见联会题目的在线作答页面，可绘画、擦除并在同组题目间切换。">
+<meta name="description" content="第1届见联会题目的在线作答页面，可绘画、擦除并在同组题目间切换。">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'%3E%3Ccircle cx='7' cy='10' r='5' fill='%231e1e1e'/%3E%3Cpath d='M12 10h14' stroke='%231e1e1e' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body class="puzzle-page">
+<body class="puzzle-page" data-season="wc1">
 
 <header class="puzzle-bar">
-  <a class="back-link" href="index.html#puzzles" aria-label="返回第一届题目">← 第一届题目</a>
+  <a class="back-link" href="index.html#puzzles" aria-label="返回第1届题目">← 第1届题目</a>
   <div class="puzzle-id">
     <span class="puzzle-name" id="puzzle-name">题目</span>
     <span class="puzzle-progress" id="puzzle-progress"></span>
   </div>
 </header>
 
-<main class="stage" id="stage">
+<div class="puzzle-area">
+  <p class="puzzle-note" id="puzzle-note" hidden></p>
+
+  <main class="stage" id="stage">
+    <div class="canvas-wrap" id="canvas-wrap">
+      <img id="puzzle-img" alt="">
+      <canvas id="draw-canvas"></canvas>
+    </div>
+
+    <p class="stage-message" id="stage-message">正在载入题目…</p>
+  </main>
+
   <button class="nav-arrow prev" id="prev" type="button" aria-label="上一题">‹</button>
-
-  <div class="canvas-wrap" id="canvas-wrap">
-    <img id="puzzle-img" alt="">
-    <canvas id="draw-canvas"></canvas>
-  </div>
-
   <button class="nav-arrow next" id="next" type="button" aria-label="下一题">›</button>
-  <p class="stage-message" id="stage-message">正在载入题目…</p>
-</main>
+</div>
 
 <div class="toolbar-row">
   <div class="toolbar" role="toolbar" aria-label="绘图工具">

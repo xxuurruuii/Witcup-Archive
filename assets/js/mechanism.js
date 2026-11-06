@@ -62,13 +62,15 @@
     '<h1>' + esc(mech.name) + '</h1>' +
     '<div class="mechanism-detail">' +
       '<figure class="mechanism-figure">' +
-        '<div class="frame">' +
-          '<img src="../' + esc(mech.image) + '" alt="' + esc(mech.name) + '机制图标">' +
+        '<div class="frame' + (mech.image ? '' : ' is-empty') + '">' +
+          (mech.image
+            ? '<img src="../' + esc(mech.image) + '" alt="' + esc(mech.name) + '机制图标">'
+            : '<span class="mech-glyph" aria-hidden="true">🧩</span>') +
         '</div>' +
       '</figure>' +
       '<div>' +
         '<section class="rule-card">' +
-          (mech.origin ? '<p class="rule-origin">' + esc(mech.origin) + '</p>' : '') +
+          (mech.note ? '<p class="rule-note">' + esc(mech.note) + '</p>' : '') +
           '<h2>规则</h2>' +
           '<ul>' + (mech.rule || []).map(function (line) {
             return '<li>' + esc(line) + '</li>';

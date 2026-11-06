@@ -1,18 +1,18 @@
-/* 见联会档案 · 站点数据
+/* 见联会存档 · 站点数据
  * 纯静态站点，无需构建。新增一届比赛时，在 seasons 里追加一个对象，
  * 并把题目、机制图片放进对应的 wcN/ 目录即可。
  *
  * 机制字段（站点级，不隶属于某一届）：
  *   page     机制页路径（相对站点根目录）
+ *   note     机制页上「规则」上方的一句话说明，留空则不显示
  *   related  相关机制 id 数组，单向声明（A 指向 B 不代表 B 指向 A）
  *   seasons  出现轮次，填该机制出现过的届次 id，机制页据此生成「出现轮次」按钮
  */
 window.WC_DATA = {
   site: {
     name: '见联会',
-    en: 'WITNESS CONFERENCE',
     tagline: '见证者玩家社群 · 解谜竞赛档案',
-    intro: '这里存档「见联会」历届比赛的时间、赛制、原创机制与全部题目。题目可以直接在页面上动笔作答，也可以放大查看后自行保存。',
+    intro: '这里存档「见联会」历届比赛的时间、赛制、原创机制与全部题目。',
     updated: '2026-11-06'
   },
 
@@ -22,30 +22,81 @@ window.WC_DATA = {
       name: '圆环',
       image: 'wc1/机制/圆环.png',
       page: 'mechanism/圆环.html',
-      origin: 'WC1原创机制',
+      note: '第1届见联会原创机制',
       tagline: '复制同区域内的一个符号，但不复制它的颜色',
       rule: [
         '必须复制同区域内的一个其它符号（同区域无其它符号则报错），但不复制其颜色。',
         '题目中不会出现超过一个圆环。'
       ],
-      source: '见证者第一届比赛相关（新）.docx',
       related: ['dot'],
-      seasons: ['wc1']
+      seasons: ['wc1', 'wc2']
     },
     {
       id: 'dot',
       name: '实心圆',
       image: 'wc1/机制/实心圆.png',
       page: 'mechanism/实心圆.html',
-      origin: 'WC1原创机制',
+      note: '第1届见联会原创机制',
       tagline: '在圆环之后结算，变成圆环复制的符号',
       rule: [
         '只会和圆环一起出现。',
         '在圆环之后结算，均变成圆环复制的符号（保留自己的颜色）。'
       ],
-      source: '见证者第一届比赛相关（新）.docx',
       related: ['ring'],
-      seasons: ['wc1']
+      seasons: ['wc1', 'wc2']
+    },
+    {
+      id: 'resist',
+      name: '反抗体',
+      image: 'wc2/机制/反抗体.png',
+      page: 'mechanism/反抗体.html',
+      note: '第2届见联会原创机制，以赛中阅读文本形式给出',
+      tagline: '空心抗体可消除区域外的一个错误符号',
+      rule: [
+        '空心抗体为反抗体，它可以且必须消除自己所在区域外的一个错误符号。'
+      ],
+      related: [],
+      seasons: ['wc2']
+    },
+    {
+      id: 'num',
+      name: '数方',
+      image: 'wc2/机制/数方.png',
+      page: 'mechanism/数方.html',
+      note: '第2届见联会原创机制，以赛中阅读文本形式给出',
+      tagline: '带圈数字可消除区域外的一个错误符号',
+      rule: [
+        '带圆圈的数字为数方，它可以且必须消除自己所在区域外的一个错误符号。',
+        '同区域的多个数方数字会叠加。'
+      ],
+      related: [],
+      seasons: ['wc2']
+    },
+    {
+      id: 'flip',
+      name: '翻转俄方',
+      image: 'wc2/机制/翻转俄方.png',
+      page: 'mechanism/翻转俄方.html',
+      note: '第2届见联会原创机制，以赛中阅读文本形式给出，仅在题目说明时使用',
+      tagline: '绿色的俄方不能旋转，但可至多翻转一次',
+      rule: [
+        '定义绿色的俄方为翻转俄方，它不能旋转，但可以进行至多一次水平或竖直翻转。'
+      ],
+      related: [],
+      seasons: ['wc2']
+    },
+    {
+      id: 'climit',
+      name: '色限',
+      image: null,
+      page: 'mechanism/色限.html',
+      note: '第2届见联会原创机制，以赛中阅读文本形式给出，仅在题目说明时使用',
+      tagline: '浅蓝 / 黄色符号所在格须被同色线经过',
+      rule: [
+        '题目为双线对称且两条线的颜色分别为浅蓝和黄，题目中的浅蓝/黄色符号所在格子周围必须被至少一条同色线经过且不被异色线经过。'
+      ],
+      related: [],
+      seasons: ['wc2']
     }
   ],
 
@@ -54,23 +105,19 @@ window.WC_DATA = {
       id: 'wc1',
       no: 1,
       dir: 'wc1',
-      title: '第一届见联会',
-      short: '第一届',
-      subtitle: '2019 夏 · QQ 群内限时赛',
+      title: '第1届见联会',
+      short: '第1届',
       date: '2019-07-15',
       time: '20:00',
       duration: '约 90 分钟',
       format: 'QQ 群内逐题发布，限时提交',
-      summary: '第 1 届见联会于 2019 年 7 月 15 日 20:00 进行，约持续 90 分钟，形式为在 QQ 群内逐题发布并限时提交。',
       facts: [
         { k: '比赛时间', v: '2019-07-15 20:00（UTC+8）· 约 90 分钟' },
         { k: '比赛形式', v: 'QQ 群内逐题发布 · 限时提交' }
       ],
       archive: {
         file: '第一届见证者群比赛.zip',
-        size: '3.0 MB',
-        label: '下载第一届原始资料包',
-        note: '包含全部题目、机制说明、定分表与规则文档（.zip）'
+        label: '下载第1届原始资料包'
       },
       puzzles: [
         { id: 'A101', name: 'A101', group: 'A1', file: '题目/A101.png' },
@@ -117,6 +164,75 @@ window.WC_DATA = {
         { id: 'BT03', name: 'BT03', group: 'BT', file: '题目/BT03.png' },
 
         { id: '压轴12合掌', name: '压轴12合掌', group: '压轴', file: '题目/压轴12合掌.jpg' }
+      ]
+    },
+
+    {
+      id: 'wc2',
+      no: 2,
+      dir: 'wc2',
+      title: '第2届见联会',
+      short: '第2届',
+      date: '2019-10-05',
+      time: '晚',
+      duration: '约 90 分钟',
+      format: 'QQ 群内逐章发布，限时提交',
+      facts: [
+        { k: '比赛时间', v: '2019-10-05 晚（UTC+8）· 约 90 分钟' },
+        { k: '比赛形式', v: 'QQ 群内逐章发布 · A–D 章各 15 分钟，压轴 20 分钟' }
+      ],
+      archive: {
+        file: '第二届见证者群比赛.zip',
+        label: '下载第2届原始资料包'
+      },
+      puzzles: [
+        { id: 'A01', name: 'A01', group: 'A卷', file: '题目/A卷/A01.png' },
+        { id: 'A02', name: 'A02', group: 'A卷', file: '题目/A卷/A02.png' },
+        { id: 'A03', name: 'A03', group: 'A卷', file: '题目/A卷/A03.jpg' },
+        { id: 'A04初见', name: 'A04初见', group: 'A卷', file: '题目/A卷/A04初见.png' },
+        { id: 'A05', name: 'A05', group: 'A卷', file: '题目/A卷/A05.jpg' },
+        { id: 'A06', name: 'A06', group: 'A卷', file: '题目/A卷/A06.jpg' },
+        { id: 'A07', name: 'A07', group: 'A卷', file: '题目/A卷/A07.png' },
+        { id: 'A08双生', name: 'A08双生', group: 'A卷', file: '题目/A卷/A08双生.png' },
+        { id: 'A09三个三', name: 'A09三个三', group: 'A卷', file: '题目/A卷/A09三个三.png' },
+
+        { id: 'B反抗1', name: 'B反抗1', group: 'B卷', file: '题目/B卷/B反抗1.jpg' },
+        { id: 'B反抗2', name: 'B反抗2', group: 'B卷', file: '题目/B卷/B反抗2.jpg' },
+        { id: 'B数方1', name: 'B数方1', group: 'B卷', file: '题目/B卷/B数方1.jpg' },
+        { id: 'B数方2', name: 'B数方2', group: 'B卷', file: '题目/B卷/B数方2.jpg' },
+        {
+          id: 'B竹林',
+          name: 'B竹林',
+          group: 'B卷',
+          file: '题目/B卷/B竹林.jpg',
+          note: '含有音频附件，点的顺序为大中小中小 或 小中大中小'
+        },
+        { id: 'B翻转1', name: 'B翻转1', group: 'B卷', file: '题目/B卷/B翻转1.jpg' },
+        { id: 'B翻转2', name: 'B翻转2', group: 'B卷', file: '题目/B卷/B翻转2.jpg' },
+        { id: 'B色限1', name: 'B色限1', group: 'B卷', file: '题目/B卷/B色限1.jpg' },
+        { id: 'B色限2', name: 'B色限2', group: 'B卷', file: '题目/B卷/B色限2.jpg' },
+
+        { id: 'C01', name: 'C01', group: 'C卷', file: '题目/C卷/C01.png' },
+        { id: 'C02升维复现', name: 'C02升维复现', group: 'C卷', file: '题目/C卷/C02升维复现.png' },
+        { id: 'C03增长', name: 'C03增长', group: 'C卷', file: '题目/C卷/C03增长.png' },
+        { id: 'C04', name: 'C04', group: 'C卷', file: '题目/C卷/C04.png' },
+        { id: 'C05九符清一色', name: 'C05九符清一色', group: 'C卷', file: '题目/C卷/C05九符清一色.png' },
+        { id: 'C06', name: 'C06', group: 'C卷', file: '题目/C卷/C06.png' },
+        { id: 'C07', name: 'C07', group: 'C卷', file: '题目/C卷/C07.png' },
+        { id: 'C08', name: 'C08', group: 'C卷', file: '题目/C卷/C08.png' },
+        { id: 'C09回旋镖', name: 'C09回旋镖', group: 'C卷', file: '题目/C卷/C09回旋镖.jpg' },
+
+        { id: 'D01', name: 'D01', group: 'D卷', file: '题目/D卷/D01.png' },
+        { id: 'D02演化', name: 'D02演化', group: 'D卷', file: '题目/D卷/D02演化.png' },
+        { id: 'D03冰雪三色', name: 'D03冰雪三色', group: 'D卷', file: '题目/D卷/D03冰雪三色.jpg' },
+        { id: 'D04', name: 'D04', group: 'D卷', file: '题目/D卷/D04.png' },
+        { id: 'D05', name: 'D05', group: 'D卷', file: '题目/D卷/D05.png' },
+        { id: 'D06', name: 'D06', group: 'D卷', file: '题目/D卷/D06.png' },
+        { id: 'D07', name: 'D07', group: 'D卷', file: '题目/D卷/D07.png' },
+        { id: 'D08', name: 'D08', group: 'D卷', file: '题目/D卷/D08.png' },
+        { id: 'D09超量', name: 'D09超量', group: 'D卷', file: '题目/D卷/D09超量.png' },
+
+        { id: '压轴 插接', name: '压轴 插接', group: '压轴', file: '题目/压轴 插接.png' }
       ]
     }
   ]

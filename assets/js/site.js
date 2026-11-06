@@ -106,13 +106,14 @@
   var seasonList = document.getElementById('season-list');
   if (seasonList) {
     var totalPuzzles = 0;
-    var totalMechanisms = 0;
+    var latestFirst = seasons.slice().sort(function (a, b) {
+      return b.no - a.no;
+    });
 
-    seasonList.innerHTML = seasons.map(function (season) {
+    seasonList.innerHTML = latestFirst.map(function (season) {
       var puzzles = countPuzzles(season);
       var mechanisms = mechanismsOf(season).length;
       totalPuzzles += puzzles;
-      totalMechanisms += mechanisms;
 
       return '' +
         '<a class="season-card" href="' + esc(season.dir) + '/index.html">' +
@@ -131,11 +132,11 @@
     var statMechanisms = document.getElementById('stat-mechanisms');
     if (statSeasons) statSeasons.textContent = seasons.length;
     if (statPuzzles) statPuzzles.textContent = totalPuzzles;
-    if (statMechanisms) statMechanisms.textContent = totalMechanisms;
+    if (statMechanisms) statMechanisms.textContent = allMechanisms.length;
   }
 
   /* 从机制页跳转过来时（?use=<机制 id>），标记出该机制出现的题目。 */
-  function highlightedPuzzles(season) {
+  function highlightedPuzzles() {
     var ids = new Set();
     var mechId = new URLSearchParams(window.location.search).get('use');
     if (!mechId) return ids;
@@ -147,7 +148,7 @@
     return ids;
   }
 
-  /* ---------- 第一届页面 ---------- */
+  /* ---------- 届次页面 ---------- */
 
   var seasonId = document.body.getAttribute('data-season');
   if (!seasonId) return;
@@ -171,7 +172,11 @@
     mechGrid.innerHTML = mechanismsOf(season).map(function (mech) {
       return '' +
         '<a class="mech-card" href="../' + esc(mech.page) + '">' +
-          '<span class="mech-figure"><img src="../' + esc(mech.image) + '" alt="' + esc(mech.name) + '机制图标" loading="lazy"></span>' +
+          '<span class="mech-figure' + (mech.image ? '' : ' is-empty') + '">' +
+            (mech.image
+              ? '<img src="../' + esc(mech.image) + '" alt="' + esc(mech.name) + '机制图标" loading="lazy">'
+              : '<span class="mech-glyph" aria-hidden="true">🧩</span>') +
+          '</span>' +
           '<span class="mech-body">' +
             '<span class="mech-name">' + esc(mech.name) + '</span>' +
             '<span class="mech-tagline">' + esc(mech.tagline) + '</span>' +
