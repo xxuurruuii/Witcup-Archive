@@ -253,7 +253,7 @@ h3 { font-size: 1.05rem; }
 
 .season-card {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 22px;
   padding: 26px 0;
@@ -263,14 +263,6 @@ h3 { font-size: 1.05rem; }
 }
 
 .season-card:hover { background: rgba(255, 255, 255, .6); }
-
-.season-no {
-  font-family: var(--mono);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text);
-  min-width: 62px;
-}
 
 .season-main { display: grid; gap: 3px; }
 
@@ -987,8 +979,7 @@ h3 { font-size: 1.05rem; }
 
 @media (max-width: 720px) {
   .wrap { padding: 0 18px; }
-  .season-card { grid-template-columns: auto 1fr; gap: 16px; padding: 20px 0; }
-  .season-no { font-size: 1.45rem; min-width: 46px; }
+  .season-card { gap: 16px; padding: 20px 0; }
   .season-arrow { display: none; }
   .puzzle-group { grid-template-columns: 1fr; gap: 10px; }
   .group-label { display: flex; align-items: baseline; gap: 8px; padding-top: 0; }
