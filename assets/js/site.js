@@ -115,13 +115,17 @@
       var mechanisms = mechanismsOf(season).length;
       totalPuzzles += puzzles;
 
+      var desc = season.duration
+        ? esc(season.format) + '，' + esc(season.duration) + '。'
+        : esc(season.format) + '。';
+
       return '' +
         '<a class="season-card" href="' + esc(season.dir) + '/index.html">' +
           '<span class="season-no">' + String(season.no).padStart(2, '0') + '</span>' +
           '<span class="season-main">' +
             '<span class="season-title">' + esc(season.title) + '</span>' +
             '<span class="season-meta">' + esc(season.date) + ' · ' + puzzles + ' 题 · ' + mechanisms + ' 个原创机制</span>' +
-            '<span class="season-desc">' + esc(season.format) + '，' + esc(season.duration) + '。</span>' +
+            '<span class="season-desc">' + desc + '</span>' +
           '</span>' +
           '<span class="season-arrow" aria-hidden="true">→</span>' +
         '</a>';
