@@ -60,7 +60,6 @@
   root.innerHTML = '' +
     '<a class="back-link" href="../index.html#seasons">← 返回首页</a>' +
     '<h1>' + esc(mech.name) + '</h1>' +
-    '<p class="lede">' + esc(mech.tagline) + '</p>' +
     '<div class="mechanism-detail">' +
       '<figure class="mechanism-figure">' +
         '<div class="frame">' +
@@ -69,6 +68,7 @@
       '</figure>' +
       '<div>' +
         '<section class="rule-card">' +
+          (mech.origin ? '<p class="rule-origin">' + esc(mech.origin) + '</p>' : '') +
           '<h2>规则</h2>' +
           '<ul>' + (mech.rule || []).map(function (line) {
             return '<li>' + esc(line) + '</li>';

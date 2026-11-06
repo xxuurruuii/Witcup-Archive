@@ -622,6 +622,13 @@ h3 { font-size: 1.05rem; }
   border-top: 1px solid var(--text);
 }
 
+.rule-origin {
+  margin: 0 0 8px;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
 .rule-card h2 { font-size: 1.02rem; letter-spacing: .06em; }
 
 .rule-card ul {

@@ -22,6 +22,7 @@ window.WC_DATA = {
       name: '圆环',
       image: 'wc1/机制/圆环.png',
       page: 'mechanism/圆环.html',
+      origin: 'WC1原创机制',
       tagline: '复制同区域内的一个符号，但不复制它的颜色',
       rule: [
         '必须复制同区域内的一个其它符号（同区域无其它符号则报错），但不复制其颜色。',
@@ -36,6 +37,7 @@ window.WC_DATA = {
       name: '实心圆',
       image: 'wc1/机制/实心圆.png',
       page: 'mechanism/实心圆.html',
+      origin: 'WC1原创机制',
       tagline: '在圆环之后结算，变成圆环复制的符号',
       rule: [
         '只会和圆环一起出现。',
