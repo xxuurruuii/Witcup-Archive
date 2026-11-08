@@ -298,7 +298,7 @@
   function updateUI() {
     if (!current) return;
     nameEl.textContent = current.name;
-    var groupLabel = /(卷|组|部分)$/.test(current.group) || current.group === '压轴'
+    var groupLabel = /(卷|组|部分|章)$/.test(current.group) || current.group === '压轴'
       ? current.group
       : current.group + ' 组';
     progressEl.textContent = groupLabel + ' · ' + (groupIndex + 1) + ' / ' + groupPuzzles.length;

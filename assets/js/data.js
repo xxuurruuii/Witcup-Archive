@@ -8,6 +8,8 @@
  *   date     首页卡片上的日期，留空则显示「无」
  *   archive  原始资料包（可选）：url 为 GitHub Release 附件地址，label 为按钮说明
  *   facts    赛制信息卡片；样卷之类没有举办时间的，时间写「无」
+ *   links    相关链接（可选）：{ label, url, primary }，primary 的用实心按钮
+ *   spoilerMechanisms  为 true 时，自定义机制卡片的名称与简介默认被剧透条盖住
  *
  * 机制字段（站点级，不隶属于某一届）：
  *   page     机制页路径（相对站点根目录）
@@ -15,12 +17,15 @@
  *   related  相关机制 id 数组，单向声明（A 指向 B 不代表 B 指向 A）
  *   seasons  出现轮次，填该机制出现过的届次 id，机制页据此生成「出现轮次」按钮
  */
+/* 第4届第2章的所有题目共用同一条备注，抽成常量避免重复。 */
+const CHAPTER2_NOTE = '此章节的所有符号均隐藏，需要通过报错猜测符号';
+
 window.WC_DATA = {
   site: {
     name: '见联会',
     tagline: '见证者玩家社群 · 解谜竞赛档案',
     intro: '这里存档「见联会」历届比赛的时间、赛制、原创机制与全部题目。',
-    updated: '2026-11-07'
+    updated: '2026-11-08'
   },
 
   mechanisms: [
@@ -196,6 +201,73 @@ window.WC_DATA = {
       ],
       related: [],
       seasons: ['wc3']
+    },
+    {
+      id: 'congruent',
+      name: '全等俄方',
+      image: 'wc4/机制/全等俄方.png',
+      page: 'mechanism/全等俄方.html',
+      note: '第4届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '区域可由与本符号数量相同的全等俄方拼成',
+      rule: [
+        '含有全等俄方的区域至少包含两个此符号，该区域的形状可以由与区域内此符号数量相同的全等的俄方拼成，斜的此符号允许旋转。',
+        '不与普通俄方共享判定。'
+      ],
+      related: [],
+      seasons: ['wc4']
+    },
+    {
+      id: 'pushblock',
+      name: '可推动符号',
+      image: 'wc4/机制/可推动符号.png',
+      page: 'mechanism/可推动符号.html',
+      note: '第4届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '带框符号可被画线推动，在最终位置发挥作用',
+      rule: [
+        '带有框的符号可以被画线推动，允许多推，若无法推动则会阻挡画线。',
+        '被推动的符号将在最终位置发挥作用。'
+      ],
+      related: ['boxpoint'],
+      seasons: ['wc4']
+    },
+    {
+      id: 'enlarge',
+      name: '放大俄方',
+      image: 'wc4/机制/放大俄方.png',
+      page: 'mechanism/放大俄方.html',
+      note: '第4届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '使同区域的一个俄方大小放大一倍',
+      rule: [
+        '选取一个同区域的俄方或空心俄方，使其大小放大一倍。'
+      ],
+      related: [],
+      seasons: ['wc4']
+    },
+    {
+      id: 'boxpoint',
+      name: '箱子必经点',
+      image: 'wc4/机制/箱子必经点.png',
+      page: 'mechanism/箱子必经点.html',
+      note: '第4届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '品红色的必经点需要有伙伴方块占据',
+      rule: [
+        '品红色的必经点需要有伙伴方块（带有爱心的可移动符号）占据。'
+      ],
+      related: ['pushblock'],
+      seasons: ['wc4']
+    },
+    {
+      id: 'linesplit',
+      name: '线分裂',
+      image: 'wc4/机制/线分裂.png',
+      page: 'mechanism/线分裂.html',
+      note: '第4届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '画线经过时向两侧分裂成两条对称的线',
+      rule: [
+        '画线经过此处时向两侧分裂成两条线，两条线关于进入此处的线段对称。'
+      ],
+      related: [],
+      seasons: ['wc4']
     }
   ],
 
@@ -416,6 +488,94 @@ window.WC_DATA = {
 
         { id: '41压轴', name: '41压轴', group: '第4部分', file: '题目/41压轴.png' },
         { id: '42大轴', name: '42大轴', group: '第4部分', file: '题目/42大轴.png' }
+      ]
+    },
+
+    {
+      id: 'wc4',
+      no: 4,
+      dir: 'wc4',
+      title: '第4届见联会 Meant To Be A Witness Clone',
+      short: '第4届',
+      date: '2020-02-23',
+      time: '晚',
+      duration: '',
+      format: '客户端内进行，互动式猜规则',
+      spoilerMechanisms: true,
+      facts: [
+        { k: '比赛时间', v: '2020-02-23 晚（UTC+8）' },
+        { k: '比赛形式', v: '首次引入客户端 · 互动式猜规则' }
+      ],
+      links: [
+        {
+          label: '打开互动版本',
+          url: 'https://html-classic.itch.zone/html/20362935/index.html?v=1794121388',
+          primary: true
+        },
+        {
+          label: 'itch.io 页面',
+          url: 'https://artless.itch.io/meant-to-be-a-witness-clone'
+        }
+      ],
+      puzzles: [
+        { id: '1-1', name: '1-1', group: '第1章', file: '题目/1-1.png' },
+        { id: '1-2', name: '1-2', group: '第1章', file: '题目/1-2.png' },
+        { id: '1-3', name: '1-3', group: '第1章', file: '题目/1-3.png' },
+        { id: '1-4', name: '1-4', group: '第1章', file: '题目/1-4.png' },
+        { id: '1-5', name: '1-5', group: '第1章', file: '题目/1-5.png' },
+        { id: '1-6', name: '1-6', group: '第1章', file: '题目/1-6.png' },
+        { id: '1-7', name: '1-7', group: '第1章', file: '题目/1-7.png' },
+
+        { id: '2-1', name: '2-1', group: '第2章', file: '题目/2-1.png', note: CHAPTER2_NOTE },
+        { id: '2-2', name: '2-2', group: '第2章', file: '题目/2-2.png', note: CHAPTER2_NOTE },
+        { id: '2-3', name: '2-3', group: '第2章', file: '题目/2-3.png', note: CHAPTER2_NOTE },
+        { id: '2-4', name: '2-4', group: '第2章', file: '题目/2-4.png', note: CHAPTER2_NOTE },
+        { id: '2-5', name: '2-5', group: '第2章', file: '题目/2-5.png', note: CHAPTER2_NOTE },
+        { id: '2-6', name: '2-6', group: '第2章', file: '题目/2-6.png', note: CHAPTER2_NOTE },
+
+        { id: '3-1', name: '3-1', group: '第3章', file: '题目/3-1.png' },
+        { id: '3-2', name: '3-2', group: '第3章', file: '题目/3-2.png' },
+        { id: '3-3', name: '3-3', group: '第3章', file: '题目/3-3.png' },
+        { id: '3-4', name: '3-4', group: '第3章', file: '题目/3-4.png' },
+        { id: '3-5', name: '3-5', group: '第3章', file: '题目/3-5.png' },
+        { id: '3-6', name: '3-6', group: '第3章', file: '题目/3-6.png' },
+        { id: '3-7', name: '3-7', group: '第3章', file: '题目/3-7.png' },
+        { id: '3-8', name: '3-8', group: '第3章', file: '题目/3-8.png' },
+        { id: '3-9', name: '3-9', group: '第3章', file: '题目/3-9.png' },
+        { id: '3-10', name: '3-10', group: '第3章', file: '题目/3-10.png' },
+        { id: '3-11', name: '3-11', group: '第3章', file: '题目/3-11.png' },
+        { id: '3-12', name: '3-12', group: '第3章', file: '题目/3-12.png' },
+
+        { id: '4-1', name: '4-1', group: '第4章', file: '题目/4-1.png' },
+        { id: '4-2', name: '4-2', group: '第4章', file: '题目/4-2.png' },
+        { id: '4-3', name: '4-3', group: '第4章', file: '题目/4-3.png' },
+        { id: '4-4', name: '4-4', group: '第4章', file: '题目/4-4.png' },
+        { id: '4-5', name: '4-5', group: '第4章', file: '题目/4-5.png' },
+        { id: '4-6', name: '4-6', group: '第4章', file: '题目/4-6.png' },
+
+        { id: '5-1', name: '5-1', group: '第5章', file: '题目/5-1.png' },
+        { id: '5-2', name: '5-2', group: '第5章', file: '题目/5-2.png' },
+        { id: '5-3', name: '5-3', group: '第5章', file: '题目/5-3.png' },
+        { id: '5-4', name: '5-4', group: '第5章', file: '题目/5-4.png' },
+        { id: '5-5', name: '5-5', group: '第5章', file: '题目/5-5.png' },
+        { id: '5-6', name: '5-6', group: '第5章', file: '题目/5-6.png' },
+        { id: '5-7', name: '5-7', group: '第5章', file: '题目/5-7.png' },
+        { id: '5-8', name: '5-8', group: '第5章', file: '题目/5-8.png' },
+        { id: '5-9', name: '5-9', group: '第5章', file: '题目/5-9.png' },
+        { id: '5-10', name: '5-10', group: '第5章', file: '题目/5-10.png' },
+        { id: '5-11', name: '5-11', group: '第5章', file: '题目/5-11.png' },
+        { id: '5-12', name: '5-12', group: '第5章', file: '题目/5-12.png' },
+        { id: '5-13', name: '5-13', group: '第5章', file: '题目/5-13.png' },
+
+        { id: '6-1', name: '6-1', group: '第6章', file: '题目/6-1.png' },
+        { id: '6-2', name: '6-2', group: '第6章', file: '题目/6-2.png' },
+        { id: '6-3', name: '6-3', group: '第6章', file: '题目/6-3.png' },
+        { id: '6-4', name: '6-4', group: '第6章', file: '题目/6-4.png' },
+        { id: '6-5', name: '6-5', group: '第6章', file: '题目/6-5.png' },
+        { id: '6-6', name: '6-6', group: '第6章', file: '题目/6-6.png' },
+        { id: '6-7', name: '6-7', group: '第6章', file: '题目/6-7.png' },
+        { id: '6-8', name: '6-8', group: '第6章', file: '题目/6-8.png' },
+        { id: '6-9', name: '6-9', group: '第6章', file: '题目/6-9.png' }
       ]
     }
   ]

@@ -183,7 +183,28 @@
     }
   }
 
-  var mechGrid = document.getElementById('mechanism-grid');  if (mechGrid) {
+  var linksBox = document.getElementById('links-box');
+  if (linksBox) {
+    var linksWrap = linksBox.querySelector('.link-buttons');
+    var links = season.links || [];
+    if (linksWrap && links.length) {
+      linksWrap.innerHTML = links.map(function (link) {
+        return '<a class="btn' + (link.primary ? '' : ' ghost') + '" href="' + esc(link.url) +
+          '" target="_blank" rel="noopener noreferrer">' + esc(link.label) + '</a>';
+      }).join('');
+      linksBox.hidden = false;
+    }
+  }
+
+  var spoilerToggle = document.getElementById('spoiler-toggle');
+
+  var mechGrid = document.getElementById('mechanism-grid');
+  if (mechGrid) {
+    var spoil = season.spoilerMechanisms === true;
+    var mark = function (text) {
+      return spoil ? '<span class="spoiler">' + esc(text) + '</span>' : esc(text);
+    };
+
     mechGrid.innerHTML = mechanismsOf(season).map(function (mech) {
       return '' +
         '<a class="mech-card" href="../' + esc(mech.page) + '">' +
@@ -193,11 +214,23 @@
               : '<span class="mech-glyph" aria-hidden="true">🧩</span>') +
           '</span>' +
           '<span class="mech-body">' +
-            '<span class="mech-name">' + esc(mech.name) + '</span>' +
-            '<span class="mech-tagline">' + esc(mech.tagline) + '</span>' +
+            '<span class="mech-name">' + mark(mech.name) + '</span>' +
+            '<span class="mech-tagline">' + mark(mech.tagline) + '</span>' +
           '</span>' +
         '</a>';
     }).join('');
+
+    if (spoilerToggle) {
+      if (!spoil) {
+        spoilerToggle.hidden = true;
+      } else {
+        spoilerToggle.addEventListener('click', function () {
+          var revealed = mechGrid.classList.toggle('is-spoiler-revealed');
+          spoilerToggle.setAttribute('aria-pressed', revealed ? 'true' : 'false');
+          spoilerToggle.textContent = revealed ? '恢复剧透条' : '隐藏剧透条';
+        });
+      }
+    }
   }
 
   var puzzleWrap = document.getElementById('puzzle-groups');

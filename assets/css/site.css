@@ -404,6 +404,11 @@ h3 { font-size: 1.05rem; }
 
 .archive-box .btn { width: 100%; justify-content: center; }
 
+.link-buttons {
+  display: grid;
+  gap: 10px;
+}
+
 /* 机制 */
 
 .mech-grid {
@@ -471,11 +476,34 @@ h3 { font-size: 1.05rem; }
   text-underline-offset: 5px;
 }
 
+/* 剧透条：仅盖住文字本身（换行时逐行贴合），悬停同一机制的任一剧透条或整体切换后消失 */
+
+.spoiler {
+  background: var(--text);
+  color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-color .16s ease, color .16s ease;
+}
+
+.mech-body:hover .spoiler,
+.is-spoiler-revealed .spoiler {
+  background: transparent;
+  color: inherit;
+}
+
 .mech-tagline {
   font-size: .86rem;
   color: var(--muted);
   line-height: 1.55;
 }
+
+.spoiler-toggle {
+  padding: 8px 16px;
+  font-size: .86rem;
+}
+
+.spoiler-toggle[hidden] { display: none; }
 
 /* 题目 */
 
