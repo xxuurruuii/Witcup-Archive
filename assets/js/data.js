@@ -268,7 +268,87 @@ window.WC_DATA = {
       ],
       related: [],
       seasons: ['wc4']
-    }
+    },
+    {
+      id: 'newpath',
+      name: '新路径点',
+      image: 'wc5/机制/新路径点.png',
+      page: 'mechanism/新路径点.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '恰有一种颜色的点全部被经过',
+      rule: [
+        '对于多种颜色的新路径点，恰有一种颜色的全部点被经过，其他颜色的点均不经过。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
+    {
+      id: 'newcolor',
+      name: '新色块',
+      image: 'wc5/机制/新色块.png',
+      page: 'mechanism/新色块.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '相同颜色的新色块不能处于同一区域',
+      rule: [
+        '相同颜色的新色块不能处于同一区域。不同颜色的新色块不作要求。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
+    {
+      id: 'newocto',
+      name: '新八角星',
+      image: 'wc5/机制/新八角星.png',
+      page: 'mechanism/新八角星.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '所在区域恰有另外两个与自身同色的符号',
+      rule: [
+        '新八角星所在的区域恰有另外两个与自身颜色相同的符号。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
+    {
+      id: 'newpoly',
+      name: '新俄方',
+      image: 'wc5/机制/新俄方.png',
+      page: 'mechanism/新俄方.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '区域空白格的形状可由区域内俄方拼出',
+      rule: [
+        '新俄方所在区域的空格形状能由该区域的俄方拼出。',
+        '斜的新俄方允许形状旋转，空心的新俄方是消除一层。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
+    {
+      id: 'newanti',
+      name: '新抗体',
+      image: 'wc5/机制/新抗体.png',
+      page: 'mechanism/新抗体.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '使区域内一类未全部报错的符号改用原版判定',
+      rule: [
+        '新抗体使所在区域内的一类没有全部不报错的符号改为使用原版判定。',
+        '新抗体生效后不会消失。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
+    {
+      id: 'newtri',
+      name: '新三角',
+      image: 'wc5/机制/新三角.png',
+      page: 'mechanism/新三角.html',
+      note: '第5届见联会原创机制，以赛中猜规则形式给出',
+      tagline: '数字表示所在格四个顶点被经过的数量',
+      rule: [
+        '新三角的个数表示所在格四个顶点被经过的数量。'
+      ],
+      related: [],
+      seasons: ['wc5']
+    },
   ],
 
   seasons: [
@@ -576,6 +656,170 @@ window.WC_DATA = {
         { id: '6-7', name: '6-7', group: '第6章', file: '题目/6-7.png' },
         { id: '6-8', name: '6-8', group: '第6章', file: '题目/6-8.png' },
         { id: '6-9', name: '6-9', group: '第6章', file: '题目/6-9.png' }
+      ]
+    },
+    {
+      id: 'wc5',
+      no: 5,
+      dir: 'wc5',
+      title: '第5届见联会 Meant To Be A Witness Clone 2',
+      short: '第5届',
+      date: '2020-08-08',
+      time: '晚',
+      duration: '',
+      format: '客户端内进行，交互式猜规则',
+      spoilerMechanisms: true,
+      facts: [
+        { k: '比赛时间', v: '2020-08-08 晚（UTC+8）' },
+        { k: '比赛形式', v: '客户端内进行 · 互动式猜规则' }
+      ],
+      links: [
+        {
+          label: '打开互动版本',
+          url: 'https://html-classic.itch.zone/html/20366691/index.html?v=1794134752',
+          primary: true
+        },
+        {
+          label: 'itch.io 页面',
+          url: 'https://artless.itch.io/meant-to-be-a-witness-clone-2-not-witness'
+        }
+      ],
+      puzzles: [
+        { id: '1-1', name: '1-1', group: '第1章', file: '题目/1-1.png' },
+        { id: '1-2', name: '1-2', group: '第1章', file: '题目/1-2.png' },
+        { id: '1-3', name: '1-3', group: '第1章', file: '题目/1-3.png' },
+        { id: '1-4', name: '1-4', group: '第1章', file: '题目/1-4.png' },
+        { id: '1-5', name: '1-5', group: '第1章', file: '题目/1-5.png' },
+        { id: '1-6', name: '1-6', group: '第1章', file: '题目/1-6.png' },
+        { id: '1-7', name: '1-7', group: '第1章', file: '题目/1-7.png' },
+
+        { id: '2-1', name: '2-1', group: '第2章', file: '题目/2-1.png' },
+        { id: '2-2', name: '2-2', group: '第2章', file: '题目/2-2.png' },
+        { id: '2-3', name: '2-3', group: '第2章', file: '题目/2-3.png' },
+        { id: '2-4', name: '2-4', group: '第2章', file: '题目/2-4.png' },
+        { id: '2-5', name: '2-5', group: '第2章', file: '题目/2-5.png' },
+        { id: '2-6', name: '2-6', group: '第2章', file: '题目/2-6.png' },
+        { id: '2-7', name: '2-7', group: '第2章', file: '题目/2-7.png' },
+        { id: '2-8', name: '2-8', group: '第2章', file: '题目/2-8.png' },
+        { id: '2-9', name: '2-9', group: '第2章', file: '题目/2-9.png' },
+        { id: '2-10', name: '2-10', group: '第2章', file: '题目/2-10.png' },
+        { id: '2-11', name: '2-11', group: '第2章', file: '题目/2-11.png' },
+        { id: '2-12', name: '2-12', group: '第2章', file: '题目/2-12.png' },
+        { id: '2-13', name: '2-13', group: '第2章', file: '题目/2-13.png' },
+        { id: '2-14', name: '2-14', group: '第2章', file: '题目/2-14.png' },
+        { id: '2-15', name: '2-15', group: '第2章', file: '题目/2-15.png' },
+
+        { id: '3-1', name: '3-1', group: '第3章', file: '题目/3-1.png' },
+        { id: '3-2', name: '3-2', group: '第3章', file: '题目/3-2.png' },
+        { id: '3-3', name: '3-3', group: '第3章', file: '题目/3-3.png' },
+        { id: '3-4', name: '3-4', group: '第3章', file: '题目/3-4.png' },
+        { id: '3-5', name: '3-5', group: '第3章', file: '题目/3-5.png' },
+        { id: '3-6', name: '3-6', group: '第3章', file: '题目/3-6.png' },
+        { id: '3-7', name: '3-7', group: '第3章', file: '题目/3-7.png' },
+        { id: '3-8', name: '3-8', group: '第3章', file: '题目/3-8.png' },
+        { id: '3-9', name: '3-9', group: '第3章', file: '题目/3-9.png' },
+        { id: '3-10', name: '3-10', group: '第3章', file: '题目/3-10.png' },
+        { id: '3-11', name: '3-11', group: '第3章', file: '题目/3-11.png' },
+        { id: '3-12', name: '3-12', group: '第3章', file: '题目/3-12.png' },
+        { id: '3-13', name: '3-13', group: '第3章', file: '题目/3-13.png' },
+        { id: '3-14', name: '3-14', group: '第3章', file: '题目/3-14.png' },
+        { id: '3-15', name: '3-15', group: '第3章', file: '题目/3-15.png' },
+        { id: '3-16', name: '3-16', group: '第3章', file: '题目/3-16.png' },
+        { id: '3-17', name: '3-17', group: '第3章', file: '题目/3-17.png' },
+        { id: '3-18', name: '3-18', group: '第3章', file: '题目/3-18.png' },
+        { id: '3-19', name: '3-19', group: '第3章', file: '题目/3-19.png' },
+        { id: '3-20', name: '3-20', group: '第3章', file: '题目/3-20.png' },
+        { id: '3-21', name: '3-21', group: '第3章', file: '题目/3-21.png' },
+        { id: '3-22', name: '3-22', group: '第3章', file: '题目/3-22.png' },
+        { id: '3-23', name: '3-23', group: '第3章', file: '题目/3-23.png' },
+        { id: '3-24', name: '3-24', group: '第3章', file: '题目/3-24.png' },
+        { id: '3-25', name: '3-25', group: '第3章', file: '题目/3-25.png' },
+        { id: '3-26', name: '3-26', group: '第3章', file: '题目/3-26.png' },
+
+        { id: '4-1', name: '4-1', group: '第4章', file: '题目/4-1.png' },
+        { id: '4-2', name: '4-2', group: '第4章', file: '题目/4-2.png' },
+        { id: '4-3', name: '4-3', group: '第4章', file: '题目/4-3.png' },
+        { id: '4-4', name: '4-4', group: '第4章', file: '题目/4-4.png' },
+        { id: '4-5', name: '4-5', group: '第4章', file: '题目/4-5.png' },
+        { id: '4-6', name: '4-6', group: '第4章', file: '题目/4-6.png' },
+        { id: '4-7', name: '4-7', group: '第4章', file: '题目/4-7.png' },
+        { id: '4-8', name: '4-8', group: '第4章', file: '题目/4-8.png' },
+        { id: '4-9', name: '4-9', group: '第4章', file: '题目/4-9.png' },
+        { id: '4-10', name: '4-10', group: '第4章', file: '题目/4-10.png' },
+        { id: '4-11', name: '4-11', group: '第4章', file: '题目/4-11.png' },
+        { id: '4-12', name: '4-12', group: '第4章', file: '题目/4-12.png' },
+        { id: '4-13', name: '4-13', group: '第4章', file: '题目/4-13.png' },
+        { id: '4-14', name: '4-14', group: '第4章', file: '题目/4-14.png' },
+        { id: '4-15', name: '4-15', group: '第4章', file: '题目/4-15.png' },
+        { id: '4-16', name: '4-16', group: '第4章', file: '题目/4-16.png' },
+        { id: '4-17', name: '4-17', group: '第4章', file: '题目/4-17.png' },
+        { id: '4-18', name: '4-18', group: '第4章', file: '题目/4-18.png' },
+        { id: '4-19', name: '4-19', group: '第4章', file: '题目/4-19.png' },
+        { id: '4-20', name: '4-20', group: '第4章', file: '题目/4-20.png' },
+        { id: '4-21', name: '4-21', group: '第4章', file: '题目/4-21.png' },
+        { id: '4-22', name: '4-22', group: '第4章', file: '题目/4-22.png' },
+        { id: '4-23', name: '4-23', group: '第4章', file: '题目/4-23.png' },
+        { id: '4-24', name: '4-24', group: '第4章', file: '题目/4-24.png' },
+        { id: '4-25', name: '4-25', group: '第4章', file: '题目/4-25.png' },
+        { id: '4-26', name: '4-26', group: '第4章', file: '题目/4-26.png' },
+        { id: '4-27', name: '4-27', group: '第4章', file: '题目/4-27.png' },
+        { id: '4-28', name: '4-28', group: '第4章', file: '题目/4-28.png' },
+        { id: '4-29', name: '4-29', group: '第4章', file: '题目/4-29.png' },
+
+        { id: '5-1', name: '5-1', group: '第5章', file: '题目/5-1.png' },
+        { id: '5-2', name: '5-2', group: '第5章', file: '题目/5-2.png' },
+        { id: '5-3', name: '5-3', group: '第5章', file: '题目/5-3.png' },
+        { id: '5-4', name: '5-4', group: '第5章', file: '题目/5-4.png' },
+        { id: '5-5', name: '5-5', group: '第5章', file: '题目/5-5.png' },
+        { id: '5-6', name: '5-6', group: '第5章', file: '题目/5-6.png' },
+        { id: '5-7', name: '5-7', group: '第5章', file: '题目/5-7.png' },
+        { id: '5-8', name: '5-8', group: '第5章', file: '题目/5-8.png' },
+        { id: '5-9', name: '5-9', group: '第5章', file: '题目/5-9.png' },
+        { id: '5-10', name: '5-10', group: '第5章', file: '题目/5-10.png' },
+        { id: '5-11', name: '5-11', group: '第5章', file: '题目/5-11.png' },
+        { id: '5-12', name: '5-12', group: '第5章', file: '题目/5-12.png' },
+        { id: '5-13', name: '5-13', group: '第5章', file: '题目/5-13.png' },
+        { id: '5-14', name: '5-14', group: '第5章', file: '题目/5-14.png' },
+        { id: '5-15', name: '5-15', group: '第5章', file: '题目/5-15.png' },
+        { id: '5-16', name: '5-16', group: '第5章', file: '题目/5-16.png' },
+        { id: '5-17', name: '5-17', group: '第5章', file: '题目/5-17.png' },
+
+        { id: '6-1', name: '6-1', group: '第6章', file: '题目/6-1.png' },
+        { id: '6-2', name: '6-2', group: '第6章', file: '题目/6-2.png' },
+        { id: '6-3', name: '6-3', group: '第6章', file: '题目/6-3.png' },
+        { id: '6-4', name: '6-4', group: '第6章', file: '题目/6-4.png' },
+        { id: '6-5', name: '6-5', group: '第6章', file: '题目/6-5.png' },
+        { id: '6-6', name: '6-6', group: '第6章', file: '题目/6-6.png' },
+        { id: '6-7', name: '6-7', group: '第6章', file: '题目/6-7.png' },
+        { id: '6-8', name: '6-8', group: '第6章', file: '题目/6-8.png' },
+        { id: '6-9', name: '6-9', group: '第6章', file: '题目/6-9.png' },
+        { id: '6-10', name: '6-10', group: '第6章', file: '题目/6-10.png' },
+        { id: '6-11', name: '6-11', group: '第6章', file: '题目/6-11.png' },
+        { id: '6-12', name: '6-12', group: '第6章', file: '题目/6-12.png' },
+        { id: '6-13', name: '6-13', group: '第6章', file: '题目/6-13.png' },
+        { id: '6-14', name: '6-14', group: '第6章', file: '题目/6-14.png' },
+        { id: '6-15', name: '6-15', group: '第6章', file: '题目/6-15.png' },
+        { id: '6-16', name: '6-16', group: '第6章', file: '题目/6-16.png' },
+        { id: '6-17', name: '6-17', group: '第6章', file: '题目/6-17.png' },
+
+        { id: '7-1', name: '7-1', group: '第7章', file: '题目/7-1.png' },
+        { id: '7-2', name: '7-2', group: '第7章', file: '题目/7-2.png' },
+        { id: '7-3', name: '7-3', group: '第7章', file: '题目/7-3.png' },
+        { id: '7-4', name: '7-4', group: '第7章', file: '题目/7-4.png' },
+        { id: '7-5', name: '7-5', group: '第7章', file: '题目/7-5.png' },
+        { id: '7-6', name: '7-6', group: '第7章', file: '题目/7-6.png' },
+        { id: '7-7', name: '7-7', group: '第7章', file: '题目/7-7.png' },
+        { id: '7-8', name: '7-8', group: '第7章', file: '题目/7-8.png' },
+        { id: '7-9', name: '7-9', group: '第7章', file: '题目/7-9.png' },
+        { id: '7-10', name: '7-10', group: '第7章', file: '题目/7-10.png' },
+        { id: '7-11', name: '7-11', group: '第7章', file: '题目/7-11.png' },
+        { id: '7-12', name: '7-12', group: '第7章', file: '题目/7-12.png' },
+        { id: '7-13', name: '7-13', group: '第7章', file: '题目/7-13.png' },
+        { id: '7-14', name: '7-14', group: '第7章', file: '题目/7-14.png' },
+        { id: '7-15', name: '7-15', group: '第7章', file: '题目/7-15.png' },
+        { id: '7-16', name: '7-16', group: '第7章', file: '题目/7-16.png' },
+
+        { id: '8-1', name: '8-1', group: '第8章', file: '题目/8-1.png' }
       ]
     }
   ]
